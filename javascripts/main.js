@@ -15,8 +15,23 @@ app.controller("NavCtrl", ($scope)=> {
 //must pass in the scope to the variable 
 app.controller("ItemCtrl", ($scope) => {
 	$scope.dog="Woof!";
+	$scope.showListView = true;
+	
+	$scope.newItem = () => {
+		$scope.showListView = false;
+		// console.log("new item");
+	};
+
+	$scope.allItems = () => {
+		$scope.showListView = true;
+		// console.log("all item");
+	};
+
+
 
 });
+
+
 
 
 
