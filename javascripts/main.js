@@ -1,6 +1,7 @@
-//controller 
-//dynamically creating a nav bar (NEW iife!!!)
-//what goes in the (and the angular bits you want to use)
+app.run((FIREBASE_CONFIG) => {
+   firebase.initializeApp(FIREBASE_CONFIG)
+});
+
 app.controller("NavCtrl", ($scope)=> {
 	$scope.cat = "Meow";
 	$scope.navItems=[{name: "Logout"}, {name: "All Items"}, {name: "New Item"}];

@@ -1,4 +1,4 @@
-app.constants("FIREBASE_CONFIG",{
+app.constant("FIREBASE_CONFIG",{
     apiKey: "",
     authDomain: "",
     databaseURL: "",
