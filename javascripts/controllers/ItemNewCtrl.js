@@ -1,12 +1,12 @@
 
-app.controller("ItemNewCtrl", function($http, $q, $scope, FIREBASE_CONFIG){
-  $scope.addNewItem=() =>{
+app.controller("ItemNewCtrl", function($http, $location, $q, $scope, FIREBASE_CONFIG, itemFactory){
+  $scope.addNewItem = () =>{
     $scope.newTask.isCompleted  = false;
     // console.log("clicked add", $scope.newTask);
-    postNewItem($scope.newTask)
+    itemFactory.postNewItem($scope.newTask)
     .then((response)=>{
       $scope.newTask = {}; //clear the inputs
-      getItems();
+       $location.url("/items/list");
       console.log("response", response);
 
       ///switch views
