@@ -2,9 +2,56 @@ app.run((FIREBASE_CONFIG) => {
    firebase.initializeApp(FIREBASE_CONFIG);
 });
 
+
+/////// Setting Up Partials //////////
+//use app.config .. only runs once on page load
+app.config(($routeProvider)=>{
+  // $routeProvider you link the pages you want to load. 
+  $routeProvider
+  // oject and then properties
+  .when('/items/list', {
+    templateUrl: 'partials/item-list.html',
+    controller: 'ItemListCtrl'
+  })
+  .when('/items/new', {
+    templateUrl: 'partials/item-new.html',
+    controller: 'ItemNewCtrl'
+  })
+  .when('/item/view/:id', {
+    templateURL: 'partials/item-view.html',
+    controller: 'ItemViewCtrl'
+  })
+  .when('/item/edit/:id', {
+    //re-useing the html in the form for new and edit .. but it does need a new controller
+    templateURL: 'partials/item-new.html',
+    controller: 'ItemEditCtrl'
+  })
+  .otherwise('/item/list');
+});
+
+
+
+
 app.controller("NavCtrl", ($scope)=> {
 	$scope.cat = "Meow";
 	$scope.navItems=[{name: "Logout"}, {name: "All Items"}, {name: "New Item"}];
+});
+
+app.controller("ItemListCtrl", ()=>{
+  console.log("ItemListCtrl");
+});
+
+
+app.controller("ItemNewCtrl", ()=>{
+  console.log("ItemNewCtrl");
+});
+
+app.controller("ItemViewCtrl", ()=>{
+  console.log("ItemViewCtrl");
+});
+
+app.controller("ItemEditCtrl", ()=>{
+  console.log("ItemEditCtrl");
 });
 
 
@@ -43,7 +90,7 @@ app.controller("ItemCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
         })
         .catch((error) => {
           reject(error);
-        })
+        });
       }); 
     };
 
@@ -53,7 +100,7 @@ app.controller("ItemCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
         $scope.items = itemz;
         // console.log("itemz", itemz);
       }).catch((error)=>{
-        console.log("got and error", error)
+        console.log("got and error", error);
       });
     };
 
@@ -67,9 +114,9 @@ app.controller("ItemCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
         resolve(resultz);
       }).catch((error)=>{
         reject(error);
-      })
-    })
-  }
+      });
+    });
+  };
 
   $scope.addNewItem=() =>{
     $scope.newTask.isCompleted  = false;
@@ -82,8 +129,8 @@ app.controller("ItemCtrl", ($http, $q, $scope, FIREBASE_CONFIG) => {
       console.log("response", response);
     }).catch((error)=>{
       console.log("Add Error", error);
-    })
-  }
+    });
+  };
 
 });
 
