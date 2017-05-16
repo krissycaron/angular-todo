@@ -1,32 +1,9 @@
-app.controller("ItemListCtrl", function($http, $q, $scope, FIREBASE_CONFIG){
+app.controller("ItemListCtrl", function($scope, itemFactory){
   $scope.items = [];
 
-  let getItemList = () => {
-      // this is different from the scope items. 
-      let itemz = [];
-      // return new Promise ... would go here, instead you use $q
-      return $q((resolve, reject) => {
-        // $.ajax().done().fail ... this is what we were using. nad becasue there is another lib you need to put in the argument. 
-        $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json`)
-        .then((fbItems)=> {
-            var itemCollection = fbItems.data;
-            Object.keys(itemCollection).forEach((key) => {
-              itemCollection[key].id=key;
-              itemz.push(itemCollection[key]);
-            });
-            resolve(itemz);
-          resolve(fbItems);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-      }); 
-    };
-
-
-
     let getItems = () => {
-      getItemList().then((itemz)=>{
+      
+      itemFactory.getItemList().then((itemz)=>{
         $scope.items = itemz;
         // console.log("itemz", itemz);
       }).catch((error)=>{
