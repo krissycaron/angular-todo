@@ -9,12 +9,14 @@ app.factory("itemFactory", function($q, $http, FIREBASE_CONFIG){
         $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json`)
         .then((fbItems)=> {
             var itemCollection = fbItems.data;
-            Object.keys(itemCollection).forEach((key) => {
-              itemCollection[key].id=key;
-              itemz.push(itemCollection[key]);
-            });
+            if (itemCollection !== null){
+              Object.keys(itemCollection).forEach((key) => {
+                itemCollection[key].id=key;
+                itemz.push(itemCollection[key]);
+              });
+            }
             resolve(itemz);
-          resolve(fbItems);
+          // resolve(fbItems);
         })
         .catch((error) => {
           reject(error);
@@ -48,6 +50,32 @@ app.factory("itemFactory", function($q, $http, FIREBASE_CONFIG){
   };
 
 
-    return {getItemList:getItemList, postNewItem:postNewItem, deletez:deletez};
+    let editItem = (item) =>{
+      console.log("item", item);
+      return $q((resolve,reject)=>{
+        $http.put(`${FIREBASE_CONFIG.databaseURL}/items/${item.id}.json`, 
+          JSON.stringify({
+          assignedTo: item.assignedTo,
+          isCompleted: item.isCompleted,
+          task: item.task
+        })
+        ).then((resultz)=>{
+        console.log("delete click");
+        resolve(resultz);
+      }).catch((error)=>{
+        reject(error);
+      });
+    });
+    };
+
+    return {getItemList:getItemList, postNewItem:postNewItem, deletez:deletez, editItem:editItem};
 
 });
+
+
+
+
+
+
+
+

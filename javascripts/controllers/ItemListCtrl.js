@@ -24,6 +24,16 @@ console.log("deleteItem");
       });
     };
 
+
+    $scope.inputChange = (item) =>{
+      itemFactory.editItem(item).then(()=>{
+
+      }).catch((error)=> {
+        console.log("error in inputchange", error);
+      });
+    };
+
+
 });
 
 
