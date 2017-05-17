@@ -22,7 +22,6 @@ app.config(function($routeProvider){
     controller: 'ItemViewCtrl'
   })
   .when('/item/edit/:id', {
-    //re-useing the html in the form for new and edit .. but it does need a new controller
     templateUrl: 'partials/item-new.html',
     controller: 'ItemEditCtrl'
   })
