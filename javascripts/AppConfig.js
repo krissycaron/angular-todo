@@ -8,6 +8,10 @@ app.run(function(FIREBASE_CONFIG) {
 app.config(function($routeProvider){
   // $routeProvider you link the pages you want to load. 
   $routeProvider
+  .when('/auth', {
+    templateUrl: 'partials/auth.html',
+    controller: 'AuthCtrl'
+  })
   // oject and then properties
   .when('/items/list', {
     templateUrl: 'partials/item-list.html',
@@ -25,5 +29,5 @@ app.config(function($routeProvider){
     templateUrl: 'partials/item-new.html',
     controller: 'ItemEditCtrl'
   })
-  .otherwise('/items/list');
+  .otherwise('/auth')
 });
