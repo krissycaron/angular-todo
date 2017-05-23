@@ -8,12 +8,24 @@
         "item1": {
             "isCompleted": false,
             "task": "find the things",
+            "uid": "7YKuILU4C5PPSuG34vrsK8gLhm12",
             "assignedTo": "Lauren"
         },
         "item2": {
             "isCompleted": false,
             "task": "groom the squirrel",
+            "uid": "7YKuILU4C5PPSuG34vrsK8gLhm12",
             "assignedTo": "Zoe"
+        }
+    },
+    "users": {
+        "user0": {
+            "uid": "7YKuILU4C5PPSuG34vrsK8gLhm12",
+            "username": "Krissy"
+        },
+        "user1": {
+            "uid": "gsZ7uALQtwTdvGaUAaZVP7uZdsz2",
+            "username": "London"
         }
     }
 }
