@@ -6,6 +6,8 @@ app.run(function(FIREBASE_CONFIG) {
 /////// Setting Up Partials //////////
 //use app.config .. only runs once on page load
 app.config(function($routeProvider){
+  //// theses are your routes.. to navigate the page. 
+
   // $routeProvider you link the pages you want to load. 
   $routeProvider
   .when('/auth', {
@@ -28,6 +30,10 @@ app.config(function($routeProvider){
   .when('/item/edit/:id', {
     templateUrl: 'partials/item-new.html',
     controller: 'ItemEditCtrl'
+  })
+  .when('/logout', {
+    templateUrl: 'partials/auth.html',
+    controller: 'AuthCtrl'
   })
   .otherwise('/auth');
 });

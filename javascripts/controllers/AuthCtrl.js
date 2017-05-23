@@ -4,6 +4,13 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 		password: "123456"
 	}; 
 
+	if($location.path() === '/logout'){
+		AuthFactory.logout();
+		$rootScope.user = {};
+		$location.url('/auth');
+	}
+
+
 //helper function will call the authenticate function from authFact. 
 	let logMeIn = () =>{
 		AuthFactory.authenticate($scope.auth).then((userCreds)=>{
