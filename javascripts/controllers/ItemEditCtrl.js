@@ -13,7 +13,7 @@ app.controller("ItemEditCtrl", function($location, $routeParams, $scope, itemFac
 
     $scope.addNewItem = () => {
         itemFactory.editItem($scope.newTask).then(() => {
-            $location.url(`./items/list`);
+            $location.url(`/items/list`);
         }).catch((error) => {
             console.log("edititem error", error);
         });
