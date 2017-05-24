@@ -1,4 +1,5 @@
 app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, UserFactory){
+	$scope.alerts = [];
 	$scope.auth = {
 		email: "a@a.com",
 		password: "123456"
@@ -17,7 +18,7 @@ app.controller("AuthCtrl", function($location, $rootScope, $scope, AuthFactory, 
 			console.log("userCreds", userCreds);
 			return UserFactory.getUser(userCreds.uid);
 		}, (error)=> {
-			console.log("authenticate error", error);
+			 $scope.alerts.push({msg: error.message});
 		}).then((user)=>{
 			$rootScope.user = user;
 			//global scope (rootScoop) can be accessed from everywhere
