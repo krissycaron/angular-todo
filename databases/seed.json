@@ -4,19 +4,40 @@
             "isCompleted": true,
             "task": "mow the cat",
             "uid": "gsZ7uALQtwTdvGaUAaZVP7uZdsz2",
+            "dueDate": "2017-06-02T05:00:00.000Z",
             "assignedTo": "Callan"
         },
         "item1": {
             "isCompleted": false,
             "task": "find the things",
             "uid": "7YKuILU4C5PPSuG34vrsK8gLhm12",
+            "dueDate": "2017-06-02T05:00:00.000Z",
             "assignedTo": "Lauren"
         },
         "item2": {
             "isCompleted": false,
             "task": "groom the squirrel",
             "uid": "7YKuILU4C5PPSuG34vrsK8gLhm12",
+            "dueDate": "2017-06-02T05:00:00.000Z",
             "assignedTo": "Zoe"
+        }
+    },
+    "tools": {
+        "tool0": {
+            "itemId": "item1",
+            "implement": "shovel"
+        },
+        "tool1": {
+            "itemId": "item1",
+            "implement": "shoes"
+        },
+        "tool2": {
+            "itemId": "item0",
+            "implement": "goat"
+        },
+        "tool3": {
+            "itemId": "item2",
+            "implement": "goat"
         }
     },
     "users": {
