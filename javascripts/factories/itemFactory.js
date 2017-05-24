@@ -1,12 +1,12 @@
 app.factory("itemFactory", function($q, $http, FIREBASE_CONFIG){
 
-	  let getItemList = () => {
+	  let getItemList = (userId) => {
       // this is different from the scope items. 
       let itemz = [];
       // return new Promise ... would go here, instead you use $q
       return $q((resolve, reject) => {
         // $.ajax().done().fail ... this is what we were using. nad becasue there is another lib you need to put in the argument. 
-        $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json`)
+        $http.get(`${FIREBASE_CONFIG.databaseURL}/items.json?orderBy="uid"&equalTo="${userId}"`)
         .then((fbItems)=> {
             var itemCollection = fbItems.data;
             if (itemCollection !== null){
@@ -69,7 +69,8 @@ app.factory("itemFactory", function($q, $http, FIREBASE_CONFIG){
           JSON.stringify({
           assignedTo: item.assignedTo,
           isCompleted: item.isCompleted,
-          task: item.task
+          task: item.task,
+          uid: item.uid
         })
         ).then((resultz)=>{
         console.log("delete click");

@@ -1,8 +1,8 @@
-app.controller("ItemListCtrl", function($scope, itemFactory){
+app.controller("ItemListCtrl", function($rootScope, $scope, itemFactory){
   $scope.items = [];
       
     let getItems = () =>{
-      itemFactory.getItemList().then((itemz)=>{
+      itemFactory.getItemList($rootScope.user.uid).then((itemz)=>{
         console.log("items", itemz);
         $scope.items = itemz;
         }).catch((error)=>{
